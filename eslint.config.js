@@ -41,6 +41,7 @@ export default [
             ['@components/guests', './src/components/guests'],
             ['@components/admin', './src/components/admin'],
             ['@hooks', './src/hooks'],
+            ['@layouts', './src/layouts'],
             ['@pages', './src/pages'],
             ['@pages/guests', './src/pages/guests'],
             ['@pages/admin', './src/pages/admin'],

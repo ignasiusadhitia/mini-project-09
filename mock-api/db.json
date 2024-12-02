@@ -10,6 +10,7 @@
       "email": "john123@gmail.com",
       "password": "$2a$10$SpZn5vBMQiGz.LP3q59w.eCWcxVv/v9TIBCkO3GvE1HfVrTc3RcUq",
       "username": "user",
+      "role": "admin",
       "id": 2
     }
   ],

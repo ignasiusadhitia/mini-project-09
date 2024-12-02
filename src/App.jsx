@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
 
+import ProtectedLayout from '@layouts/ProtectedLayout';
 import {
   Clients,
   Login,
@@ -33,14 +34,16 @@ const App = () => {
         <Route element={<Login />} path="/login" />
 
         {/* Admin Routes (Protected) */}
-        <Route element={<Overview />} path="/dashboard" />
-        <Route element={<Portfolio />} path="/dashboard/portfolio" />
-        <Route element={<Testimonials />} path="/dashboard/testimonials" />
-        <Route element={<Clients />} path="/dashboard/clients" />
-        <Route element={<WhoWeAre />} path="/dashboard/who-we-are" />
-        <Route element={<Teams />} path="/dashboard/teams" />
-        <Route element={<Trusts />} path="/dashboard/trusts" />
-        <Route element={<AdminContactUs />} path="/dashboard/contact-us" />
+        <Route element={<ProtectedLayout />} path="/dashboard/*">
+          <Route element={<Overview />} path="" />
+          <Route element={<Portfolio />} path="/portfolio" />
+          <Route element={<Testimonials />} path="/testimonials" />
+          <Route element={<Clients />} path="/clients" />
+          <Route element={<WhoWeAre />} path="/who-we-are" />
+          <Route element={<Teams />} path="/teams" />
+          <Route element={<Trusts />} path="/trusts" />
+          <Route element={<AdminContactUs />} path="/contact-us" />
+        </Route>
 
         {/* Fallback Route */}
         <Route element={<NotFound />} path="*" />

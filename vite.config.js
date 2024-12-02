@@ -16,6 +16,7 @@ export default defineConfig({
       '@components/guests': path.resolve('src/components/guests'),
       '@components/admin': path.resolve('src/components/admin'),
       '@hooks': path.resolve('src/hooks'),
+      '@layouts': path.resolve('src/layouts'),
       '@pages': path.resolve('src/pages'),
       '@pages/guests': path.resolve('src/pages/guests'),
       '@pages/admin': path.resolve('src/pages/admin'),

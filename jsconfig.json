@@ -7,6 +7,7 @@
       "@components/guests": ["src/components/guests/index.js"],
       "@components/admin": ["src/components/admin/index.js"],
       "@hooks/*": ["src/hooks/*"],
+      "@layouts/*": ["src/layouts/*"],
       "@pages": ["src/pages/index.js"],
       "@pages/guests": ["src/pages/guests/index.js"],
       "@pages/admin": ["src/pages/admin/index.js"],

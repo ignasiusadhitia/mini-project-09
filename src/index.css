@@ -1,0 +1,36 @@
+@font-face {
+  font-family: 'Roobert';
+  src: url('./assets/fonts/RoobertTRIAL-Heavy.otf') format('opentype');
+  font-weight: 800; /* Heavy */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roobert';
+  src: url('./assets/fonts/RoobertTRIAL-Bold.otf') format('opentype');
+  font-weight: 700; /* Bold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roobert';
+  src: url('./assets/fonts/RoobertTRIAL-SemiBold.otf') format('opentype');
+  font-weight: 600; /* SemiBold */
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Roobert';
+  src: url('./assets/fonts/RoobertTRIAL-Medium.otf') format('opentype');
+  font-weight: 500; /* Medium */
+  font-style: normal;
+}
+
+/* Set default font family for the entire application */
+html {
+  font-family: 'Roobert', sans-serif !important;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;

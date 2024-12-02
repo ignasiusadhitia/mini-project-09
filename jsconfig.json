@@ -1,0 +1,20 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./",
+    "paths": {
+      "@icons": ["src/assets/icons/index.js"],
+      "@images": ["src/assets/images/index.js"],
+      "@components/guests": ["src/components/guests/index.js"],
+      "@components/admin": ["src/components/admin/index.js"],
+      "@hooks/*": ["src/hooks/*"],
+      "@pages": ["src/pages/index.js"],
+      "@pages/guests": ["src/pages/guests/index.js"],
+      "@pages/admin": ["src/pages/admin/index.js"],
+      "@store/*": ["src/store/*"],
+      "@services/*": ["src/services/*"],
+      "@utils/*": ["src/utils/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

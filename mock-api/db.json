@@ -1,0 +1,32 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "username": "john123",
+      "password": "P@ssw0rd!",
+      "role": "admin"
+    },
+    {
+      "email": "john123@gmail.com",
+      "password": "$2a$10$SpZn5vBMQiGz.LP3q59w.eCWcxVv/v9TIBCkO3GvE1HfVrTc3RcUq",
+      "username": "user",
+      "id": 2
+    }
+  ],
+  "portfolios": [],
+  "testimonials": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "message": "Great service!",
+      "date": "2024-12-01",
+      "title": "CEO"
+    }
+  ],
+  "clients": [],
+  "blogs": [],
+  "who-we-are": {},
+  "teams": [],
+  "trusts": {},
+  "contacts": []
+}

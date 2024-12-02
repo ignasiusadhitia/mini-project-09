@@ -36,13 +36,13 @@ const App = () => {
         {/* Admin Routes (Protected) */}
         <Route element={<ProtectedLayout />} path="/dashboard/*">
           <Route element={<Overview />} path="" />
-          <Route element={<Portfolio />} path="/portfolio" />
-          <Route element={<Testimonials />} path="/testimonials" />
-          <Route element={<Clients />} path="/clients" />
-          <Route element={<WhoWeAre />} path="/who-we-are" />
-          <Route element={<Teams />} path="/teams" />
-          <Route element={<Trusts />} path="/trusts" />
-          <Route element={<AdminContactUs />} path="/contact-us" />
+          <Route element={<Portfolio />} path="portfolio" />
+          <Route element={<Testimonials />} path="testimonials" />
+          <Route element={<Clients />} path="clients" />
+          <Route element={<WhoWeAre />} path="who-we-are" />
+          <Route element={<Teams />} path="teams" />
+          <Route element={<Trusts />} path="trusts" />
+          <Route element={<AdminContactUs />} path="contact-us" />
         </Route>
 
         {/* Fallback Route */}

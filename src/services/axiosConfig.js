@@ -2,8 +2,8 @@ import axios from 'axios';
 
 // Base URLs
 const BASE_URLS = {
-  base1: import.meta.env.VITE_DASH_API_BASE_URL || 'http://localhost:3000',
-  base2: import.meta.env.VITE_FRONT_API_BASE_URL || 'http://localhost:3000',
+  dash: import.meta.env.VITE_DASH_API_BASE_URLs || 'http://localhost:3000',
+  front: import.meta.env.VITE_FRONT_API_BASE_URL || 'http://localhost:3000',
 };
 
 // TODO: JWT Token, retrieve from localStorage or redux

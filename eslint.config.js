@@ -38,6 +38,7 @@ export default [
             ['@images', './src/assets/images'],
             ['@icons', './src/assets/icons'],
             ['@images', './src/assets/images'],
+            ['@components/commons', './src/components/commons'],
             ['@components/front', './src/components/front'],
             ['@components/dashboard', './src/components/dashboard'],
             ['@hooks', './src/hooks'],

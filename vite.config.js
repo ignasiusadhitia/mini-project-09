@@ -13,6 +13,7 @@ export default defineConfig({
     alias: {
       '@icons': path.resolve('src/assets/icons'),
       '@images': path.resolve('src/assets/images'),
+      '@components/commons': path.resolve('src/components/commons'),
       '@components/front': path.resolve('src/components/front'),
       '@components/dashboard': path.resolve('src/components/dashboard'),
       '@hooks': path.resolve('src/hooks'),

@@ -4,6 +4,7 @@
     "paths": {
       "@icons": ["src/assets/icons/index.js"],
       "@images": ["src/assets/images/index.js"],
+      "@components/commons": ["src/components/commons/index.js"],
       "@components/front": ["src/components/front/index.js"],
       "@components/dashboard": ["src/components/dashboard/index.js"],
       "@hooks/*": ["src/hooks/*"],

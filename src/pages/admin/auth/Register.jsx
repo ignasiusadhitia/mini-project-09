@@ -32,12 +32,12 @@ const Register = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-xl font-bold mb-4">Register</h1>
+    <div className="flex h-screen flex-col items-center justify-center">
+      <h1 className="mb-4 text-xl font-bold">Register</h1>
       <form className="w-full max-w-sm" onSubmit={handleRegister}>
         <input
           required
-          className="border p-2 mb-2 w-full"
+          className="mb-2 w-full border p-2"
           name="username"
           placeholder="Username"
           type="text"
@@ -46,7 +46,7 @@ const Register = () => {
         />
         <input
           required
-          className="border p-2 mb-2 w-full"
+          className="mb-2 w-full border p-2"
           name="email"
           placeholder="Email"
           type="email"
@@ -55,16 +55,16 @@ const Register = () => {
         />
         <input
           required
-          className="border p-2 mb-4 w-full"
+          className="mb-4 w-full border p-2"
           name="password"
           placeholder="Password"
           type="password"
           value={formData.password}
           onChange={handleInputChange}
         />
-        {error && <p className="text-red-500 mb-2">{error}</p>}
+        {error && <p className="mb-2 text-red-500">{error}</p>}
         <button
-          className="bg-blue-600 text-white p-2 rounded w-full"
+          className="w-full rounded bg-blue-600 p-2 text-white"
           type="submit"
         >
           Register

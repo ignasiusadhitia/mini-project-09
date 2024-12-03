@@ -34,11 +34,7 @@ export default {
         // '2xl': '1216px',
       },
     },
-    margin: {},
-    padding: {},
-    borderRadius: {},
-    height: {},
-    width: {},
+
     extend: {
       colors: {
         black: '#101010',

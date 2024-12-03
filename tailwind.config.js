@@ -1,18 +1,44 @@
 /** @type {import('tailwindcss').Config} */
-import defaultTheme from 'tailwindcss/defaultTheme';
 
 export default {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     fontFamily: {
-      roobert: ['Roobert', ...defaultTheme.fontFamily.sans],
+      roobert: ['Open Sans', 'sans-serif'],
     },
-    fontWeight: {
-      heavy: 800,
-      bold: 700,
-      semibold: 600,
-      medium: 500,
+    fontSize: {
+      350: '21.875rem',
+      100: '6.25rem',
+      60: '3.75rem',
+      44: '2.75rem',
+      28: '1.75rem',
+      24: '1.5rem',
+      17: '1.0625rem',
+      16: '1rem',
     },
+    letterSpacing: {
+      0: '0',
+      '-2': '-0.02em',
+    },
+    lineHeight: {
+      110: '1.1',
+      212: '2.12',
+    },
+    container: {
+      center: true,
+      screens: {
+        // sm: '100%',
+        // md: '100%',
+        // lg: '1216px',
+        // xl: '1216px',
+        // '2xl': '1216px',
+      },
+    },
+    margin: {},
+    padding: {},
+    borderRadius: {},
+    height: {},
+    width: {},
     extend: {
       colors: {
         black: '#101010',
@@ -29,22 +55,6 @@ export default {
         'purple-avatar': '#ccc6ed',
         'yellow-avatar': '#fef1e0',
       },
-      container: {
-        center: true,
-        screens: {
-          // sm: '100%',
-          // md: '100%',
-          // lg: '1216px',
-          // xl: '1216px',
-          // '2xl': '1216px',
-        },
-      },
-      margin: {},
-      padding: {},
-      borderRadius: {},
-      fontSize: {},
-      height: {},
-      width: {},
     },
   },
   plugins: [],

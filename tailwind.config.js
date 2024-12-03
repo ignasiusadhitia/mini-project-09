@@ -50,6 +50,9 @@ export default {
         'purple-avatar': '#ccc6ed',
         'yellow-avatar': '#fef1e0',
       },
+      spacing: {
+        27.5: '6.938rem',
+      },
     },
   },
   plugins: [],

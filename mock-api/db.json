@@ -14,20 +14,95 @@
       "id": 2
     }
   ],
-  "portfolios": [],
+  "portfolios": [
+    {
+      "id": 1,
+      "title": "Portfolio 1",
+      "description": "This is the first portfolio",
+      "image": "https://images.unsplash.com/photo-1682687220564-43274a7d7075?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      "link": "https://www.google.com"
+    },
+    {
+      "id": 2,
+      "title": "Portfolio 2",
+      "description": "This is the second portfolio",
+      "image": "https://images.unsplash.com/photo-1682687220564-43274a7d7075?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      "link": "https://www.google.com"
+    }
+  ],
   "testimonials": [
     {
       "id": 1,
       "name": "John Doe",
       "message": "Great service!",
-      "date": "2024-12-01",
+      "image": "https://images.unsplash.com/photo-1682687220564-43274a7d7075?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
       "title": "CEO"
+    },
+    {
+      "id": 2,
+      "name": "Jane Doe",
+      "message": "Excellent work!",
+      "image": "https://images.unsplash.com/photo-1682687220564-43274a7d7075?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      "title": "CTO"
     }
   ],
-  "clients": [],
-  "blogs": [],
-  "who-we-are": {},
-  "teams": [],
-  "trusts": {},
-  "contacts": []
+  "clients": [
+    {
+      "id": 1,
+      "name": "Client 1",
+      "image": "https://images.unsplash.com/photo-1682687220564-43274a7d7075?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+    },
+    {
+      "id": 2,
+      "name": "Client 2",
+      "image": "https://images.unsplash.com/photo-1682687220564-43274a7d7075?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80"
+    }
+  ],
+  "blogs": [
+    {
+      "id": 1,
+      "title": "Blog 1",
+      "content": "This is the first blog",
+      "image": "https://images.unsplash.com/photo-1682687220564-43274a7d7075?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      "meta_title": "Blog 1",
+      "meta_description": "This is the first blog",
+      "meta_tags": "blog, first blog",
+      "date": "2021-01-01",
+      "author": "John Doe"
+    }
+  ],
+  "who-we-are": {
+    "title": "Who We Are",
+    "description": "We are a team of experienced professionals who are passionate about what we do. We are dedicated to providing our clients with the best possible service.",
+    "year": "2021"
+  },
+  "teams": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "image": "https://images.unsplash.com/photo-1682687220564-43274a7d7075?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      "title": "CEO"
+    },
+    {
+      "id": 2,
+      "name": "Jane Doe",
+      "image": "https://images.unsplash.com/photo-1682687220564-43274a7d7075?ixlib=rb-4.0.3&ixid=M3wxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80",
+      "title": "CTO"
+    }
+  ],
+  "trusts": {
+    "clients": 350,
+    "members": 20,
+    "projects": 100,
+    "revenue": 85
+  },
+  "contacts": [
+    {
+      "id": 1,
+      "name": "John Doe",
+      "email": "john@example.com",
+      "phone": "1234567890",
+      "message": "This is a test message"
+    }
+  ]
 }

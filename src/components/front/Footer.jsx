@@ -42,14 +42,18 @@ const tocLinks = [
 ];
 
 const socialsLinks = [
-  { label: <Twitter />, path: 'https://x.com' },
-  { label: <Facebook />, path: 'https://facebook.com' },
-  { label: <Google />, path: 'https://plus.google.com' },
+  { label: <Twitter />, path: 'https://x.com', type: 'external' },
+  { label: <Facebook />, path: 'https://facebook.com', type: 'external' },
+  { label: <Google />, path: 'https://plus.google.com', type: 'external' },
 ];
 
 const FooterLink = ({ link }) => (
   <li>
-    <Link to={link.path}>
+    <Link
+      rel={link.type === 'external' ? 'noopener noreferrer' : ''}
+      target={link.type === 'external' ? '_blank' : ''}
+      to={link.path}
+    >
       <Typography variant="footerText">{link.label}</Typography>
     </Link>
   </li>
@@ -59,6 +63,7 @@ FooterLink.propTypes = {
   link: PropTypes.shape({
     path: PropTypes.string,
     label: PropTypes.string,
+    type: PropTypes.string,
   }),
 };
 

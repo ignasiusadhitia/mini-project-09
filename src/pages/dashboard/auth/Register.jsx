@@ -33,7 +33,7 @@ const Register = () => {
 
   return (
     <div className="flex h-screen flex-col items-center justify-center">
-      <h1 className="mb-4 text-xl font-bold">Register</h1>
+      <h1 className="text-xl mb-4 font-bold">Register</h1>
       <form className="w-full max-w-sm" onSubmit={handleRegister}>
         <input
           required

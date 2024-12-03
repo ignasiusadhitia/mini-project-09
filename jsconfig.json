@@ -4,13 +4,13 @@
     "paths": {
       "@icons": ["src/assets/icons/index.js"],
       "@images": ["src/assets/images/index.js"],
-      "@components/guests": ["src/components/guests/index.js"],
-      "@components/admin": ["src/components/admin/index.js"],
+      "@components/front": ["src/components/front/index.js"],
+      "@components/dashboard": ["src/components/dashboard/index.js"],
       "@hooks/*": ["src/hooks/*"],
       "@layouts/*": ["src/layouts/*"],
       "@pages": ["src/pages/index.js"],
-      "@pages/guests": ["src/pages/guests/index.js"],
-      "@pages/admin": ["src/pages/admin/index.js"],
+      "@pages/front": ["src/pages/front/index.js"],
+      "@pages/dashboard": ["src/pages/dashboard/index.js"],
       "@store/*": ["src/store/*"],
       "@services/*": ["src/services/*"],
       "@utils/*": ["src/utils/*"]

@@ -34,7 +34,6 @@ export default {
         // '2xl': '1216px',
       },
     },
-
     extend: {
       colors: {
         black: '#101010',

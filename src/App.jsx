@@ -20,8 +20,8 @@ import {
   Trusts,
   WhoWeAre,
   ContactUs as AdminContactUs,
-} from '@pages/admin';
-import { AboutUs, ContactUs, HomePage, OurWorks } from '@pages/guests';
+} from '@pages/dashboard';
+import { AboutUs, ContactUs, HomePage, OurWorks } from '@pages/front';
 
 import { NotFound } from '@pages';
 

@@ -7,7 +7,7 @@
       "@components/commons": ["src/components/commons/index.js"],
       "@components/front": ["src/components/front/index.js"],
       "@components/dashboard": ["src/components/dashboard/index.js"],
-      "@context/*": ["src/context/*"],
+      "@context": ["src/context/index.js"],
       "@hooks": ["src/hooks/index.js"],
       "@layouts/*": ["src/layouts/*"],
       "@pages": ["src/pages/index.js"],

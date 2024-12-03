@@ -41,6 +41,7 @@ export default [
             ['@components/commons', './src/components/commons'],
             ['@components/front', './src/components/front'],
             ['@components/dashboard', './src/components/dashboard'],
+            ['@context', 'src/context'],
             ['@hooks', './src/hooks'],
             ['@layouts', './src/layouts'],
             ['@pages', './src/pages'],

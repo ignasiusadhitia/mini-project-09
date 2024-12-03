@@ -17,6 +17,7 @@ export default defineConfig({
       '@components/commons': path.resolve('src/components/commons'),
       '@components/front': path.resolve('src/components/front'),
       '@components/dashboard': path.resolve('src/components/dashboard'),
+      '@context': path.resolve('src/context'),
       '@hooks': path.resolve('src/hooks'),
       '@layouts': path.resolve('src/layouts'),
       '@pages': path.resolve('src/pages'),

@@ -1,11 +1,13 @@
 /** @type {import('tailwindcss').Config} */
 
+const defaultTheme = require('tailwindcss/defaultTheme');
+
 export default {
   darkMode: ['class'],
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
     fontFamily: {
-      roobert: ['Open Sans', 'sans-serif'],
+      sans: ['"Open Sans"', ...defaultTheme.fontFamily.sans],
     },
     fontSize: {
       16: '1rem',
@@ -31,22 +33,19 @@ export default {
     },
     extend: {
       colors: {
-        black: '#101010',
-        'pure-black': '#000000',
-        white: '#FFFFFF',
-        primary: {
-          DEFAULT: 'hsl(var(--primary))',
-          foreground: 'hsl(var(--primary-foreground))',
-        },
-        'primary-lighter': '#febc0a',
-        'primary-darker': '#fec00a',
-        'blue-link': '#4589f7',
-        grey: '#d9d9d9',
-        'grey-transparent': 'rgba(217, 217, 217, 0.5)',
-        gray: '#9a9b9b',
-        'green-avatar': '#c8e1c0',
-        'purple-avatar': '#ccc6ed',
-        'yellow-avatar': '#fef1e0',
+        'front-black': '#101010',
+        'front-pure-black': '#000000',
+        'front-white': '#FFFFFF',
+        'front-primary': '#fdca09',
+        'front-primary-lighter': '#febc0a',
+        'front-primary-darker': '#fec00a',
+        'front-blue-link': '#4589f7',
+        'front-grey': '#d9d9d9',
+        'front-grey-transparent': 'rgba(217, 217, 217, 0.5)',
+        'front-gray': '#9a9b9b',
+        'front-green-avatar': '#c8e1c0',
+        'front-purple-avatar': '#ccc6ed',
+        'front-yellow-avatar': '#fef1e0',
         background: 'hsl(var(--background))',
         foreground: 'hsl(var(--foreground))',
         card: {
@@ -56,6 +55,10 @@ export default {
         popover: {
           DEFAULT: 'hsl(var(--popover))',
           foreground: 'hsl(var(--popover-foreground))',
+        },
+        primary: {
+          DEFAULT: 'hsl(var(--primary))',
+          foreground: 'hsl(var(--primary-foreground))',
         },
         secondary: {
           DEFAULT: 'hsl(var(--secondary))',

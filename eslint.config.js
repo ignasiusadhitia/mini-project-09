@@ -35,6 +35,7 @@ export default [
       'import/resolver': {
         alias: {
           map: [
+            ['@', './src'],
             ['@images', './src/assets/images'],
             ['@icons', './src/assets/icons'],
             ['@images', './src/assets/images'],

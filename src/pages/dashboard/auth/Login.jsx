@@ -1,30 +1,29 @@
-import React, { useState } from 'react';
-
-import { useDispatch } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
-
-import { login } from '@store/features/authSlice';
+import { Logo } from '@/assets/icons';
+import { Button } from '@/components/ui/button';
+import { Checkbox } from '@/components/ui/checkbox'; // Gunakan komponen ShadCN
+import { Input } from '@/components/ui/input';
+import { Label } from '@/components/ui/label';
 
 const Login = () => {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const dispatch = useDispatch();
-  const navigate = useNavigate();
-
-  const handleLogin = () => {
-    // Simulasi login
-    if (username === 'admin' && password === 'admin123') {
-      dispatch(login());
-      localStorage.setItem('token', 'mock-token'); // Simpan token ke localStorage
-      navigate('/dashboard'); // Redirect ke halaman admin setelah login
-    } else {
-      alert('Invalid credentials');
-    }
-  };
-
   return (
-    <div className="flex h-screen w-full items-center justify-center px-4">
-      <LoginForm />
+    <div className="bg-front-primary flex h-screen w-full items-center justify-center px-4">
+      <form className="flex w-full flex-col gap-4 rounded-lg bg-white p-12 md:w-96">
+        <Logo className="mx-auto mb-8" />
+        <div className="flex items-center space-x-2">
+          <Input placeholder="Email" />
+        </div>
+
+        <div className="flex items-center space-x-2">
+          <Input placeholder="Password" />
+        </div>
+
+        <div className="flex items-center space-x-2">
+          <Checkbox id="terms" />
+          <Label>Remember Me</Label>
+        </div>
+
+        <Button className="mt-4 w-full">Login</Button>
+      </form>
     </div>
   );
 };

@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 const useMultipartForm = (initialValues = {}) => {
   const [values, setValues] = useState(initialValues);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, type, value, files } = e.target;
@@ -42,6 +43,8 @@ const useMultipartForm = (initialValues = {}) => {
     handleChange,
     getFormData,
     resetForm,
+    isSubmitting,
+    setIsSubmitting,
   };
 };
 

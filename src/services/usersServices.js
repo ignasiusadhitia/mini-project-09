@@ -7,6 +7,14 @@ const createUsersAxios = (token) =>
     token,
   });
 
+const createUsersAxiosMultipart = (token) =>
+  createAxiosInstance({
+    baseURLKey: 'dash',
+    auth: true,
+    multipart: true,
+    token,
+  });
+
 const usersServices = {
   // Fetcher function for SWR
   fetchAllUsers: (token) =>
@@ -15,7 +23,7 @@ const usersServices = {
       .then((res) => res.data),
 
   addUser: (token, user) =>
-    createUsersAxios(token)
+    createUsersAxiosMultipart(token)
       .post('/users', user)
       .then((res) => res.data),
 

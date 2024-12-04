@@ -9,4 +9,5 @@ export { default as Teams } from './dashboard/Teams';
 export { default as Testimonials } from './dashboard/Testimonials';
 export { default as Trusts } from './dashboard/Trusts';
 export { default as Users } from './dashboard/Users';
+export { default as UsersForm } from './dashboard/UsersForm';
 export { default as WhoWeAre } from './dashboard/WhoWeAre';

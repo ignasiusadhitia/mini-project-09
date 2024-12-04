@@ -34,6 +34,7 @@ import {
 } from '@tanstack/react-table';
 import { useSelector } from 'react-redux';
 import useSWR from 'swr';
+import { useNavigate } from 'react-router-dom';
 
 // Column definitions
 const columns = [
@@ -117,12 +118,17 @@ const Users = () => {
   const [columnFilters, setColumnFilters] = useState([]);
   const [columnVisibility, setColumnVisibility] = useState({});
   const [rowSelection, setRowSelection] = useState({});
+  const navigate = useNavigate();
   const { token } = useSelector((state) => state.auth);
   const {
     data: users,
     error,
     isLoading,
   } = useSWR(token ? '/users' : null, () => usersServices.fetchAllUsers(token));
+
+  const handleAddNewUser = () => {
+    navigate('/dashboard/users/add');
+  };
 
   const tableData = users?.data || [];
 
@@ -155,7 +161,7 @@ const Users = () => {
             table.getColumn('email')?.setFilterValue(event.target.value)
           }
         />
-        <Button>Add User</Button>
+        <Button onClick={handleAddNewUser}>Add User</Button>
       </div>
 
       {isLoading && (

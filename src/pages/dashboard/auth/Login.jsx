@@ -93,7 +93,7 @@ const LoginForm = () => {
 
 const Login = () => {
   return (
-    <div className="flex h-screen w-full items-center justify-center bg-front-primary px-4">
+    <div className="bg-front-primary flex h-screen w-full items-center justify-center px-4">
       <FormProvider>
         <LoginForm />
       </FormProvider>

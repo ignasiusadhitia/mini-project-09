@@ -1,17 +1,28 @@
 import { createAxiosInstance } from '@services/axiosConfig';
 
-export const getAllUsers = createAxiosInstance({
-  baseURLKey: 'dash',
-  auth: true,
-});
+const createUsersAxios = (token) =>
+  createAxiosInstance({
+    baseURLKey: 'dash',
+    auth: true,
+    token,
+  });
 
-export const deleteUser = createAxiosInstance({
-  baseURLKey: 'dash',
-  auth: true,
-});
+const usersServices = {
+  // Fetcher function for SWR
+  fetchAllUsers: (token) =>
+    createUsersAxios(token)
+      .get('/users')
+      .then((res) => res.data),
 
-export const createUser = createAxiosInstance({
-  baseURLKey: 'dash',
-  auth: true,
-  multipart: true,
-});
+  addUser: (token, user) =>
+    createUsersAxios(token)
+      .post('/users', user)
+      .then((res) => res.data),
+
+  deleteUserById: (token, id) =>
+    createUsersAxios(token)
+      .delete(`/users/${id}`)
+      .then((res) => res.data),
+};
+
+export default usersServices;

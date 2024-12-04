@@ -21,7 +21,14 @@ import {
   WhoWeAre,
   ContactUs as AdminContactUs,
 } from '@pages/dashboard';
-import { AboutUs, ContactUs, HomePage, OurWorks } from '@pages/front';
+import {
+  AboutUs,
+  Article,
+  BlogList,
+  ContactUs,
+  HomePage,
+  OurWorks,
+} from '@pages/front';
 
 import { NotFound } from '@pages';
 
@@ -38,8 +45,11 @@ const App = () => {
             {/* Guests Routes */}
             <Route element={<HomePage />} path="/" />
             <Route element={<OurWorks />} path="/our-works" />
+            <Route element={<Article />} path="/our-works/:id" />
             <Route element={<AboutUs />} path="/about-us" />
             <Route element={<ContactUs />} path="/contact" />
+            <Route element={<BlogList />} path="/blog" />
+            <Route element={<Article />} path="/blog/:id" />
 
             {/* Auth Routes */}
             {!isAuthenticated && (

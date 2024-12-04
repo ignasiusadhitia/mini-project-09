@@ -14,6 +14,7 @@ import {
   Login,
   Overview,
   Portfolio,
+  Profile,
   Teams,
   Testimonials,
   Trusts,
@@ -74,7 +75,8 @@ const App = () => {
             <Route element={<WhoWeAre />} path="who-we-are" />
             <Route element={<Teams />} path="teams" />
             <Route element={<Trusts />} path="trusts" />
-            <Route element={<AdminContactUs />} path="contact-us" />
+            <Route element={<AdminContactUs />} path="messages" />
+            <Route element={<Profile />} path="profile" />
           </Route>
         )}
 

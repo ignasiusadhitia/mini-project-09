@@ -3,7 +3,7 @@
 import { ChevronsUpDown, LogOut, User } from 'lucide-react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
@@ -82,10 +82,12 @@ export function NavUser({ user }) {
             <DropdownMenuSeparator />
 
             <DropdownMenuGroup>
-              <DropdownMenuItem className="cursor-pointer">
-                <User />
-                Profile
-              </DropdownMenuItem>
+              <Link to="/dashboard/profile">
+                <DropdownMenuItem className="cursor-pointer">
+                  <User />
+                  Profile
+                </DropdownMenuItem>
+              </Link>
             </DropdownMenuGroup>
 
             <DropdownMenuItem className="cursor-pointer" onClick={handleLogout}>

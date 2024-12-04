@@ -1,7 +1,7 @@
 import React from 'react';
 
 import PropTypes from 'prop-types';
-import { Navigate, Outlet } from 'react-router-dom';
+import { Link, Navigate, Outlet, useLocation } from 'react-router-dom';
 
 import { AppSidebar } from '@/components/app-sidebar';
 import {
@@ -20,6 +20,11 @@ import {
 import { Separator } from '@radix-ui/react-separator';
 
 const ProtectedLayout = ({ isAuthenticated }) => {
+  let location = useLocation();
+  const path = location.pathname;
+
+  const pathSegments = path.split('/').filter((segment) => segment);
+
   if (!isAuthenticated) {
     return <Navigate replace to="/login" />;
   }
@@ -34,13 +39,17 @@ const ProtectedLayout = ({ isAuthenticated }) => {
           <Breadcrumb>
             <BreadcrumbList>
               <BreadcrumbItem className="hidden md:block">
-                <BreadcrumbLink href="#">
-                  Building Your Application
-                </BreadcrumbLink>
+                <Link to={`/${pathSegments?.[0]}`}>
+                  <BreadcrumbLink className="capitalize">
+                    {pathSegments?.[0]}
+                  </BreadcrumbLink>
+                </Link>
               </BreadcrumbItem>
               <BreadcrumbSeparator className="hidden md:block" />
               <BreadcrumbItem>
-                <BreadcrumbPage>Data Fetching</BreadcrumbPage>
+                <BreadcrumbPage className="capitalize">
+                  {pathSegments?.[1] || 'Overview'}
+                </BreadcrumbPage>
               </BreadcrumbItem>
             </BreadcrumbList>
           </Breadcrumb>

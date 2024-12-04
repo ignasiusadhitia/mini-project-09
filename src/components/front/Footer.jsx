@@ -42,9 +42,24 @@ const tocLinks = [
 ];
 
 const socialsLinks = [
-  { label: <Twitter />, path: 'https://x.com', type: 'external' },
-  { label: <Facebook />, path: 'https://facebook.com', type: 'external' },
-  { label: <Google />, path: 'https://plus.google.com', type: 'external' },
+  {
+    label: 'twitter',
+    icon: <Twitter />,
+    path: 'https://x.com',
+    type: 'external',
+  },
+  {
+    label: 'facebook',
+    icon: <Facebook />,
+    path: 'https://facebook.com',
+    type: 'external',
+  },
+  {
+    label: 'google',
+    icon: <Google />,
+    path: 'https://plus.google.com',
+    type: 'external',
+  },
 ];
 
 const FooterLink = ({ link }) => (
@@ -54,13 +69,18 @@ const FooterLink = ({ link }) => (
       target={link.type === 'external' ? '_blank' : ''}
       to={link.path}
     >
-      <Typography variant="footerText">{link.label}</Typography>
+      {link.icon && link.icon}
+
+      <Typography variant="footerText">
+        {link.icon ? '' : link.label}
+      </Typography>
     </Link>
   </li>
 );
 
 FooterLink.propTypes = {
   link: PropTypes.shape({
+    icon: PropTypes.element,
     path: PropTypes.string,
     label: PropTypes.string,
     type: PropTypes.string,

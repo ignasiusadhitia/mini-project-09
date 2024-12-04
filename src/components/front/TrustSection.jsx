@@ -1,7 +1,13 @@
 import React from 'react';
 
+import { TrustItem } from '@components/front';
+
 const TrustSection = () => {
-  return <div>TrustSection</div>;
+  return (
+    <div>
+      <TrustItem />
+    </div>
+  );
 };
 
 export default TrustSection;

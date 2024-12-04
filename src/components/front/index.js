@@ -1,1 +1,12 @@
+export { default as BlogCard } from './BlogCard';
+export { default as BlogCardSection } from './BlogCardSection';
+export { default as CTASection } from './CTASection';
 export { default as Footer } from './Footer';
+export { default as Header } from './Header.jsx';
+export { default as PastClientsSection } from './PastClientsSection.jsx';
+export { default as PortfolioCard } from './PortfolioCard.jsx';
+export { default as PortfolioSection } from './PortfolioSection.jsx';
+export { default as TeamCard } from './TeamCard.jsx';
+export { default as TeamSection } from './TeamSection.jsx';
+export { default as TrustItem } from './TrustItem.jsx';
+export { default as TrustSection } from './TrustSection.jsx';

@@ -9,6 +9,7 @@ import {
 import ProtectedLayout from '@layouts/ProtectedLayout';
 import {
   ContactUs as AdminContactUs,
+  Blogs,
   Clients,
   Login,
   Overview,
@@ -16,6 +17,7 @@ import {
   Teams,
   Testimonials,
   Trusts,
+  Users,
   WhoWeAre,
 } from '@pages/dashboard';
 import {
@@ -64,6 +66,8 @@ const App = () => {
             path="/dashboard"
           >
             <Route index element={<Overview />} />
+            <Route element={<Users />} path="users" />
+            <Route element={<Blogs />} path="blogs" />
             <Route element={<Portfolio />} path="portfolio" />
             <Route element={<Testimonials />} path="testimonials" />
             <Route element={<Clients />} path="clients" />

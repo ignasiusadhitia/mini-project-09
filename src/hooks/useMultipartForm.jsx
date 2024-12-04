@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export const useMultipartForm = (initialValues = {}) => {
+const useMultipartForm = (initialValues = {}) => {
   const [values, setValues] = useState(initialValues);
 
   const handleChange = (e) => {
@@ -44,3 +44,5 @@ export const useMultipartForm = (initialValues = {}) => {
     resetForm,
   };
 };
+
+export default useMultipartForm;

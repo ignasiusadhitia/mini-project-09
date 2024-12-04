@@ -1,4 +1,4 @@
-import { createContext } from 'react';
+import React, { createContext, useContext } from 'react';
 
 import PropTypes from 'prop-types';
 
@@ -8,8 +8,8 @@ const FormContext = createContext();
 
 export const FormProvider = ({ children, isMultipart = false }) => {
   const multipartForm = useMultipartForm();
-  const regularForm = useForm();
-  const form = isMultipart ? multipartForm : regularForm;
+  const standardForm = useForm();
+  const form = isMultipart ? multipartForm : standardForm;
   const purify = usePurify();
 
   return (
@@ -22,4 +22,12 @@ export const FormProvider = ({ children, isMultipart = false }) => {
 FormProvider.propTypes = {
   children: PropTypes.node.isRequired,
   isMultipart: PropTypes.bool,
+};
+
+export const useFormContext = () => {
+  const context = useContext(FormContext);
+  if (!context) {
+    throw new Error('useFormContext must be used within a FormProvider');
+  }
+  return context;
 };

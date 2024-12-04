@@ -8,7 +8,7 @@
       "@components/commons": ["src/components/commons/index.js"],
       "@components/front": ["src/components/front/index.js"],
       "@components/dashboard": ["src/components/dashboard/index.js"],
-      "@context": ["src/context/index.js"],
+      "@context/*": ["src/context/*"],
       "@hooks": ["src/hooks/index.js"],
       "@layouts/*": ["src/layouts/*"],
       "@pages": ["src/pages/index.js"],

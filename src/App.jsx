@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { useSelector } from 'react-redux';
 import {
   Navigate,
@@ -10,16 +8,15 @@ import {
 
 import ProtectedLayout from '@layouts/ProtectedLayout';
 import {
+  ContactUs as AdminContactUs,
   Clients,
   Login,
   Overview,
   Portfolio,
-  Register,
   Teams,
   Testimonials,
   Trusts,
   WhoWeAre,
-  ContactUs as AdminContactUs,
 } from '@pages/dashboard';
 import {
   AboutUs,
@@ -54,7 +51,6 @@ const App = () => {
             {/* Auth Routes */}
             {!isAuthenticated && (
               <>
-                <Route element={<Register />} path="/register" />
                 <Route element={<Login />} path="/login" />
               </>
             )}

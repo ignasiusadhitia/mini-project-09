@@ -1,5 +1,4 @@
 export { default as Login } from './auth/Login';
-export { default as Register } from './auth/Register';
 export { default as Blogs } from './dashboard/Blogs';
 export { default as Clients } from './dashboard/Clients';
 export { default as ContactUs } from './dashboard/ContactUs';

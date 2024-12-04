@@ -2,7 +2,7 @@ import axios from 'axios';
 
 // Base URLs
 const BASE_URLS = {
-  dash: import.meta.env.VITE_DASH_API_BASE_URLs || 'http://localhost:3000',
+  dash: import.meta.env.VITE_DASH_API_BASE_URL || 'http://localhost:3000',
   front: import.meta.env.VITE_FRONT_API_BASE_URL || 'http://localhost:3000',
 };
 
@@ -11,7 +11,7 @@ const getToken = () => localStorage.getItem('jwt_token');
 
 // Function to create Axios instance dynamically
 export const createAxiosInstance = ({
-  baseURLKey = 'base1', // Default to BASE_URL_1
+  baseURLKey = 'dash', // Default to BASE_URL_1
   headers = {},
   auth = false,
   multipart = false,

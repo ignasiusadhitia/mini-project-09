@@ -1,14 +1,21 @@
 import { useCallback } from 'react';
 
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+
 import { Logo } from '@/assets/icons';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox'; // Gunakan komponen ShadCN
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { FormProvider, useFormContext } from '@/context/FormContext';
+import authService from '@/services/authServices';
+import { loginSuccess } from '@/store/features/authSlice';
 
 const LoginForm = () => {
   const { values, handleChange, purify } = useFormContext();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleCheckboxChange = useCallback(
     (checked) => {
@@ -22,14 +29,21 @@ const LoginForm = () => {
     [handleChange]
   );
 
-  const onSubmit = (event) => {
+  const onSubmit = async (event) => {
     event.preventDefault();
     const purifiedData = {
       email: purify.sanitize(values.email),
       password: purify.sanitize(values.password),
       remember_me: values.remember_me,
     };
-    console.log(purifiedData);
+    try {
+      const response = await authService.login(purifiedData);
+      const { token } = response;
+      dispatch(loginSuccess(token));
+      navigate('/dashboard');
+    } catch (error) {
+      alert(error.response?.data?.message);
+    }
   };
 
   return (

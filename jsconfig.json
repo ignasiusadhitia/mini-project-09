@@ -2,6 +2,7 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
+      "@/*": ["./*"],
       "@icons": ["src/assets/icons/index.js"],
       "@images": ["src/assets/images/index.js"],
       "@components/commons": ["src/components/commons/index.js"],

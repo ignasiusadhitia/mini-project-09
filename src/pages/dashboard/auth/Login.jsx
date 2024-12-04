@@ -23,28 +23,8 @@ const Login = () => {
   };
 
   return (
-    <div className="flex h-screen flex-col items-center justify-center">
-      <h1 className="text-xl mb-4 font-bold">Login</h1>
-      <input
-        className="mb-2 border p-2"
-        placeholder="Username"
-        type="text"
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
-      <input
-        className="mb-4 border p-2"
-        placeholder="Password"
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
-      <button
-        className="rounded bg-blue-600 p-2 text-white"
-        onClick={handleLogin}
-      >
-        Login
-      </button>
+    <div className="flex h-screen w-full items-center justify-center px-4">
+      <LoginForm />
     </div>
   );
 };

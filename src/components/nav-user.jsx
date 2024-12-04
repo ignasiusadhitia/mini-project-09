@@ -4,6 +4,7 @@ import { ChevronsUpDown, LogOut, User } from 'lucide-react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
+import useSWR from 'swr';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import {
@@ -24,12 +25,17 @@ import {
 import authService from '@/services/authServices';
 import { logout } from '@/store/features/authSlice';
 
-export function NavUser({ user }) {
+export function NavUser() {
   const { isMobile } = useSidebar();
 
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const { token } = useSelector((state) => state.auth);
+  // eslint-disable-next-line no-unused-vars
+  const { data, error, isLoading } = useSWR(
+    token ? '/auth/profile' : null,
+    () => authService.getMyProfile(token)
+  );
 
   const handleLogout = async () => {
     try {
@@ -50,13 +56,15 @@ export function NavUser({ user }) {
               className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground"
               size="lg"
             >
-              <Avatar className="h-8 w-8 rounded-lg">
-                <AvatarImage alt={user.name} src={user.avatar} />
+              <Avatar className="h-8 w-8 rounded-full">
+                <AvatarImage alt={data?.user.name} src={data?.user.photo} />
                 <AvatarFallback className="rounded-lg">CN</AvatarFallback>
               </Avatar>
               <div className="text-sm leading-tight grid flex-1 text-left">
-                <span className="truncate font-semibold">{user.name}</span>
-                <span className="text-xs truncate">{user.email}</span>
+                <span className="truncate font-semibold">
+                  {data?.user.name}
+                </span>
+                <span className="text-xs truncate">{data?.user.email}</span>
               </div>
               <ChevronsUpDown className="ml-auto size-4" />
             </SidebarMenuButton>
@@ -69,13 +77,15 @@ export function NavUser({ user }) {
           >
             <DropdownMenuLabel className="p-0 font-normal">
               <div className="text-sm flex items-center gap-2 px-1 py-1.5 text-left">
-                <Avatar className="h-8 w-8 rounded-lg">
-                  <AvatarImage alt={user.name} src={user.avatar} />
+                <Avatar className="h-8 w-8 rounded-full">
+                  <AvatarImage alt={data?.user.name} src={data?.user.photo} />
                   <AvatarFallback className="rounded-lg">CN</AvatarFallback>
                 </Avatar>
                 <div className="text-sm leading-tight grid flex-1 text-left">
-                  <span className="truncate font-semibold">{user.name}</span>
-                  <span className="text-xs truncate">{user.email}</span>
+                  <span className="truncate font-semibold">
+                    {data?.user.name}
+                  </span>
+                  <span className="text-xs truncate">{data?.user.email}</span>
                 </div>
               </div>
             </DropdownMenuLabel>

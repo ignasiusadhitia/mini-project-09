@@ -1,5 +1,3 @@
-import React from 'react';
-
 import PropTypes from 'prop-types';
 import { Link, Navigate, Outlet, useLocation } from 'react-router-dom';
 
@@ -22,7 +20,6 @@ import { Separator } from '@radix-ui/react-separator';
 const ProtectedLayout = ({ isAuthenticated }) => {
   let location = useLocation();
   const path = location.pathname;
-
   const pathSegments = path.split('/').filter((segment) => segment);
 
   if (!isAuthenticated) {

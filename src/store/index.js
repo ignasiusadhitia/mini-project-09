@@ -15,7 +15,7 @@ const encryptor = encryptTransform({
   },
 });
 
-export const rootReducer = combineReducers({
+const rootReducer = combineReducers({
   auth: authReducer,
 });
 

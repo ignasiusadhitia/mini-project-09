@@ -39,7 +39,7 @@ const LoginForm = () => {
     try {
       const response = await authService.login(purifiedData);
       const { token } = response;
-      dispatch(loginSuccess(token));
+      dispatch(loginSuccess({ token }));
       navigate('/dashboard');
     } catch (error) {
       alert(error.response?.data?.message);

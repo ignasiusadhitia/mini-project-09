@@ -6,15 +6,13 @@ const BASE_URLS = {
   front: import.meta.env.VITE_FRONT_API_BASE_URL || 'http://localhost:3000',
 };
 
-// TODO: JWT Token, retrieve from localStorage or redux
-const getToken = () => localStorage.getItem('jwt_token');
-
 // Function to create Axios instance dynamically
 export const createAxiosInstance = ({
   baseURLKey = 'dash', // Default to BASE_URL_1
   headers = {},
   auth = false,
   multipart = false,
+  token = '',
 } = {}) => {
   const instance = axios.create({
     baseURL: BASE_URLS[baseURLKey],
@@ -28,7 +26,6 @@ export const createAxiosInstance = ({
   if (auth) {
     instance.interceptors.request.use(
       (config) => {
-        const token = getToken();
         if (token) {
           config.headers.Authorization = `Bearer ${token}`;
         }

@@ -1,20 +1,19 @@
-import { createAxiosInstance } from '@services/axiosConfig';
-
-const axios = createAxiosInstance({ baseURLKey: 'dash' });
-
-const axiosWithAuth = createAxiosInstance({
-  baseURLKey: 'dash',
-  auth: true,
-});
+import { createAxiosInstance } from '@services/axiosConfig'; // Import axiosConfig
 
 const authService = {
   login: async (credentials) => {
+    const axios = createAxiosInstance({ baseURLKey: 'dash' }); // Instance tanpa autentikasi
     const response = await axios.post('/auth/login', credentials);
     return response.data;
   },
 
-  logout: async (credentials) => {
-    const response = await axiosWithAuth.post('/auth/logout', credentials);
+  logout: async (token) => {
+    const axiosWithAuth = createAxiosInstance({
+      baseURLKey: 'dash',
+      auth: true,
+      token,
+    });
+    const response = await axiosWithAuth.post('/auth/logout');
     return response.data;
   },
 };

@@ -2,7 +2,7 @@ import React from 'react';
 
 import { Typography } from '@components/commons';
 
-const TrustBannerSection = () => {
+const CTASection = () => {
   return (
     <section>
       {/* Logo */}
@@ -22,4 +22,4 @@ const TrustBannerSection = () => {
   );
 };
 
-export default TrustBannerSection;
+export default CTASection;

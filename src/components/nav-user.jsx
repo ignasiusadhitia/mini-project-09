@@ -110,11 +110,3 @@ export function NavUser() {
     </SidebarMenu>
   );
 }
-
-NavUser.propTypes = {
-  user: PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    email: PropTypes.string.isRequired,
-    avatar: PropTypes.string.isRequired,
-  }).isRequired,
-};

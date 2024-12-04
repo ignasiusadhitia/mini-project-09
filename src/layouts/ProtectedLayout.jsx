@@ -29,7 +29,7 @@ const ProtectedLayout = ({ isAuthenticated }) => {
     <SidebarProvider>
       <AppSidebar />
       <SidebarInset>
-        <header className="bg-background sticky top-0 flex h-16 shrink-0 items-center gap-2 border-b px-4">
+        <header className="sticky top-0 flex h-16 shrink-0 items-center gap-2 border-b bg-background px-4">
           <SidebarTrigger className="-ml-1" />
           <Separator className="mr-2 h-4" orientation="vertical" />
           <Breadcrumb>
@@ -46,11 +46,9 @@ const ProtectedLayout = ({ isAuthenticated }) => {
                       </BreadcrumbPage>
                     ) : (
                       <>
-                        <Link to={to}>
-                          <BreadcrumbLink className="capitalize">
-                            {segment.replace(/-/g, ' ')}
-                          </BreadcrumbLink>
-                        </Link>
+                        <BreadcrumbLink asChild className="capitalize">
+                          <Link to={to}>{segment.replace(/-/g, ' ')}</Link>
+                        </BreadcrumbLink>
                         <BreadcrumbSeparator />
                       </>
                     )}

@@ -18,9 +18,8 @@ import {
 import { Separator } from '@radix-ui/react-separator';
 
 const ProtectedLayout = ({ isAuthenticated }) => {
-  let location = useLocation();
-  const path = location.pathname;
-  const pathSegments = path.split('/').filter((segment) => segment);
+  const location = useLocation();
+  const pathSegments = location.pathname.split('/').filter(Boolean);
 
   if (!isAuthenticated) {
     return <Navigate replace to="/login" />;
@@ -35,19 +34,29 @@ const ProtectedLayout = ({ isAuthenticated }) => {
           <Separator className="mr-2 h-4" orientation="vertical" />
           <Breadcrumb>
             <BreadcrumbList>
-              <BreadcrumbItem className="hidden md:block">
-                <Link to={`/${pathSegments?.[0]}`}>
-                  <BreadcrumbLink className="capitalize">
-                    {pathSegments?.[0]}
-                  </BreadcrumbLink>
-                </Link>
-              </BreadcrumbItem>
-              <BreadcrumbSeparator className="hidden md:block" />
-              <BreadcrumbItem>
-                <BreadcrumbPage className="capitalize">
-                  {pathSegments?.[1] || 'Overview'}
-                </BreadcrumbPage>
-              </BreadcrumbItem>
+              {pathSegments.map((segment, index) => {
+                const to = `/${pathSegments.slice(0, index + 1).join('/')}`;
+                const isLast = index === pathSegments.length - 1;
+
+                return (
+                  <BreadcrumbItem key={to}>
+                    {isLast ? (
+                      <BreadcrumbPage className="capitalize">
+                        {segment.replace(/-/g, ' ')}
+                      </BreadcrumbPage>
+                    ) : (
+                      <>
+                        <Link to={to}>
+                          <BreadcrumbLink className="capitalize">
+                            {segment.replace(/-/g, ' ')}
+                          </BreadcrumbLink>
+                        </Link>
+                        <BreadcrumbSeparator />
+                      </>
+                    )}
+                  </BreadcrumbItem>
+                );
+              })}
             </BreadcrumbList>
           </Breadcrumb>
         </header>

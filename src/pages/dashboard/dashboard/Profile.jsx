@@ -6,12 +6,6 @@ import { Card, CardHeader, CardTitle } from '@/components/ui/card';
 import authService from '@/services/authServices';
 
 const Profile = () => {
-  const user = {
-    name: 'John Doe',
-    email: 'john.doe@example.com',
-    bio: 'Software Developer at BlueSky Community. Passionate about React and open-source.',
-    avatar: 'https://via.placeholder.com/150',
-  };
   const { token } = useSelector((state) => state.auth);
   // eslint-disable-next-line no-unused-vars
   const { data, error, isLoading } = useSWR(

@@ -16,6 +16,8 @@ import {
   Portfolios,
   PortfoliosForm,
   Profile,
+  Testimonials,
+  TestimonialsForm,
   Users,
   UsersForm,
 } from '@pages/dashboard';
@@ -76,6 +78,12 @@ const App = () => {
             <Route
               element={<PortfoliosForm isEdit />}
               path="portfolios/edit/:id"
+            />
+            <Route element={<Testimonials />} path="testimonials" />
+            <Route element={<TestimonialsForm />} path="testimonials/add" />
+            <Route
+              element={<TestimonialsForm isEdit />}
+              path="testimonials/edit/:id"
             />
             <Route element={<AdminContactUs />} path="contact-us" />
             <Route element={<Profile />} path="profile" />

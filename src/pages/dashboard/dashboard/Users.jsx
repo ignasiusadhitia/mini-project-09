@@ -99,7 +99,12 @@ const columns = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem className="cursor-pointer">
-              <DeleteConfirmation id={userId} mutateKey="/users" />
+              <DeleteConfirmation
+                id={userId}
+                mutateKey="/users"
+                deleteHandler={usersServices.deleteUserById}
+                entityName="user"
+              />
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

@@ -10,6 +10,7 @@ import ProtectedLayout from '@layouts/ProtectedLayout';
 import {
   ContactUs as AdminContactUs,
   Blogs,
+  BlogsForm,
   Clients,
   Login,
   Overview,
@@ -71,6 +72,8 @@ const App = () => {
             <Route element={<Users />} path="users" />
             <Route element={<UsersForm />} path="users/add" />
             <Route element={<Blogs />} path="blogs" />
+            <Route element={<BlogsForm />} path="blogs/add" />
+            <Route element={<BlogsForm isEdit />} path="blogs/edit/:id" />
             <Route element={<Portfolio />} path="portfolio" />
             <Route element={<Testimonials />} path="testimonials" />
             <Route element={<Clients />} path="clients" />

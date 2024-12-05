@@ -34,59 +34,61 @@ import {
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import useSWR from 'swr';
-import { DeleteConfirmation } from '@/components/dashboard';
+import { Confirmation, DeleteConfirmation } from '@/components/dashboard';
+import blogsServices from '@/services/blogsServices';
 
 // Column definitions
 const columns = [
   {
-    accessorKey: 'photo',
-    header: 'Photo',
-    cell: ({ row }) => (
-      <img
-        className="h-8 w-8 rounded-full"
-        src={row.getValue('photo')}
-        alt="user-photo"
-      />
-    ),
-  },
-  {
-    accessorKey: 'name',
-    header: ({ column }) => (
-      <Button
-        variant="ghost"
-        onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-      >
-        Name
-        <ArrowUpDown />
-      </Button>
-    ),
-    cell: ({ row }) => <div className="capitalize">{row.getValue('name')}</div>,
-  },
-  {
-    accessorKey: 'email',
-    header: ({ column }) => (
-      <Button
-        variant="ghost"
-        onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-      >
-        Email
-        <ArrowUpDown />
-      </Button>
-    ),
-    cell: ({ row }) => <div className="lowercase">{row.getValue('email')}</div>,
-  },
-  {
     accessorKey: 'title',
     header: 'Title',
+    cell: ({ row }) => <div className="lowercase">{row.getValue('title')}</div>,
+  },
+  {
+    accessorKey: 'published',
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+      >
+        Published
+        <ArrowUpDown />
+      </Button>
+    ),
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue('title')}</div>
+      <div className="capitalize">
+        {row.getValue('published') ? 'Published' : 'Draft'}
+      </div>
+    ),
+  },
+  {
+    accessorKey: 'updated_at',
+    header: 'Updated At',
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue('updated_at')}</div>
     ),
   },
   {
     id: 'actions',
     enableHiding: false,
     cell: ({ row }) => {
-      const userId = row.original.id;
+      const articleId = row.original.id;
+      const navigate = useNavigate();
+
+      const handleEditArticle = (id) => {
+        navigate(`/dashboard/blogs/edit/${id}`);
+      };
+
+      const handlePublishArticle = async (token, id) => {
+        try {
+          const response = await blogsServices.publishArticleById(token, id, {
+            published: !row.getValue('published'),
+          });
+          console.log(response);
+        } catch (error) {
+          console.log('Error publishing article:', error);
+        }
+      };
 
       return (
         <DropdownMenu>
@@ -99,7 +101,36 @@ const columns = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem className="cursor-pointer">
-              <DeleteConfirmation id={userId} mutateKey="/users" />
+              <DeleteConfirmation
+                id={articleId}
+                mutateKey="/blogs"
+                deleteHandler={blogsServices.deleteArticleById}
+                entityName="article"
+              />
+            </DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+              <span onClick={() => handleEditArticle(articleId)}>Edit</span>
+            </DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+              <Confirmation
+                id={articleId}
+                mutateKey="/blogs"
+                actionHandler={handlePublishArticle}
+                customLabel={
+                  row.getValue('published') ? 'Unpublish' : 'Publish'
+                }
+                entityName="article"
+                customTitle={
+                  row.getValue('published')
+                    ? 'Are you sure you want to unpublish this article?'
+                    : 'Are you sure you want to publish this article?'
+                }
+                customDescription={
+                  row.getValue('published')
+                    ? 'This article will be unpublished and will be hidden from the public.'
+                    : 'This article will be published and will be visible to the public.'
+                }
+              />
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -116,16 +147,18 @@ const Blogs = () => {
   const navigate = useNavigate();
   const { token } = useSelector((state) => state.auth);
   const {
-    data: users,
+    data: articles,
     error,
     isLoading,
-  } = useSWR(token ? '/users' : null, () => usersServices.fetchAllUsers(token));
-
-  const handleAddNewUser = () => {
-    navigate('/dashboard/users/add');
+  } = useSWR(token ? '/blogs' : null, () =>
+    blogsServices.fetchAllArticles(token)
+  );
+  const handleAddNewArticle = () => {
+    navigate('/dashboard/blogs/add');
   };
 
-  const tableData = users?.data || [];
+  const tableData = articles?.data || [];
+  console.log(articles);
 
   const table = useReactTable({
     data: tableData,
@@ -151,13 +184,13 @@ const Blogs = () => {
       <div className="flex items-center justify-between py-4">
         <Input
           className="max-w-sm"
-          placeholder="Filter emails..."
-          value={table.getColumn('email')?.getFilterValue() ?? ''}
+          placeholder="Filter title..."
+          value={table.getColumn('title')?.getFilterValue() ?? ''}
           onChange={(event) =>
-            table.getColumn('email')?.setFilterValue(event.target.value)
+            table.getColumn('title')?.setFilterValue(event.target.value)
           }
         />
-        <Button onClick={handleAddNewUser}>Add User</Button>
+        <Button onClick={handleAddNewArticle}>Add Article</Button>
       </div>
 
       {isLoading && (

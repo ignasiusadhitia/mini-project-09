@@ -40,6 +40,7 @@ const useMultipartForm = (initialValues = {}) => {
 
   return {
     values,
+    setValues,
     handleChange,
     getFormData,
     resetForm,

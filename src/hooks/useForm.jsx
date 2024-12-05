@@ -2,6 +2,7 @@ import { useState } from 'react';
 
 const useForm = (initialValues = {}) => {
   const [values, setValues] = useState(initialValues);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChange = (e) => {
     const { name, value, type, checked, files } = e.target;
@@ -28,8 +29,11 @@ const useForm = (initialValues = {}) => {
 
   return {
     values,
+    setValues,
     handleChange,
     resetForm,
+    isSubmitting,
+    setIsSubmitting,
   };
 };
 

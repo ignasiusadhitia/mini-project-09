@@ -7,9 +7,17 @@ const createBlogsAxios = (token) =>
     token,
   });
 
+const createBlogsAxiosMultipart = (token) =>
+  createAxiosInstance({
+    baseURLKey: 'dash',
+    auth: true,
+    multipart: true,
+    token,
+  });
+
 const blogsServices = {
   addArticle: (token, article) =>
-    createBlogsAxios(token)
+    createBlogsAxiosMultipart(token)
       .post('/blogs', article)
       .then((res) => res.data),
 
@@ -18,8 +26,13 @@ const blogsServices = {
       .get('/blogs')
       .then((res) => res.data),
 
-  updateArticleById: (token, id, article) =>
+  fetchArticleById: (token, id) =>
     createBlogsAxios(token)
+      .get(`/blogs/${id}`)
+      .then((res) => res.data),
+
+  updateArticleById: (token, id, article) =>
+    createBlogsAxiosMultipart(token)
       .put(`/blogs/${id}`, article)
       .then((res) => res.data),
 

@@ -1,5 +1,6 @@
 export { default as Login } from './auth/Login';
 export { default as Blogs } from './dashboard/Blogs';
+export { default as BlogsForm } from './dashboard/BlogsForm.jsx';
 export { default as Clients } from './dashboard/Clients';
 export { default as ContactUs } from './dashboard/ContactUs';
 export { default as Overview } from './dashboard/Overview';

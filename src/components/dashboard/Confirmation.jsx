@@ -14,18 +14,21 @@ import {
   AlertDialogTrigger,
 } from '@/components/ui/alert-dialog';
 
-export default function DeleteConfirmation({
+export default function Confirmation({
   id,
   mutateKey,
-  deleteHandler,
+  actionHandler,
   entityName,
+  customLabel,
+  customTitle,
   customDescription,
+  confirmButtonText,
 }) {
   const { token } = useSelector((state) => state.auth);
 
-  const handleDelete = async () => {
+  const handleAction = async () => {
     try {
-      const response = await deleteHandler(token, id);
+      const response = await actionHandler(token, id);
       mutate(mutateKey);
       console.log(response);
     } catch (error) {
@@ -42,32 +45,38 @@ export default function DeleteConfirmation({
             e.stopPropagation();
           }}
         >
-          Delete
+          {customLabel || 'Take Action'}
         </div>
       </AlertDialogTrigger>
       <AlertDialogContent>
         <AlertDialogHeader>
           <AlertDialogTitle>
-            Are you absolutely sure you want to delete this {entityName}?
+            {customTitle ||
+              `Are you sure you want to proceed with this action on the ${entityName}?`}
           </AlertDialogTitle>
           <AlertDialogDescription>
             {customDescription ||
-              `This action cannot be undone. This will permanently delete the ${entityName} and remove its data from our servers.`}
+              `This action cannot be undone. It will affect the ${entityName} and its related data.`}
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
           <AlertDialogCancel>Cancel</AlertDialogCancel>
-          <AlertDialogAction onClick={handleDelete}>Continue</AlertDialogAction>
+          <AlertDialogAction onClick={handleAction}>
+            {confirmButtonText || 'Confirm'}
+          </AlertDialogAction>
         </AlertDialogFooter>
       </AlertDialogContent>
     </AlertDialog>
   );
 }
 
-DeleteConfirmation.propTypes = {
+Confirmation.propTypes = {
   id: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
   mutateKey: PropTypes.string.isRequired,
-  deleteHandler: PropTypes.func.isRequired,
+  actionHandler: PropTypes.func.isRequired,
   entityName: PropTypes.string.isRequired,
+  customLabel: PropTypes.string,
+  customTitle: PropTypes.string,
   customDescription: PropTypes.string,
+  confirmButtonText: PropTypes.string,
 };

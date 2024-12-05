@@ -59,9 +59,9 @@ const blogsServices = {
       .get('/blogs')
       .then((res) => res.data),
 
-  fetchArticleByIdFront: (id) =>
+  fetchArticleByTitleFront: (title) =>
     createBlogsAxiosFront()
-      .get(`/blogs/${id}`)
+      .get(`/blogs/${title}`)
       .then((res) => res.data),
 };
 

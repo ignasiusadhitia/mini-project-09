@@ -48,6 +48,16 @@ const portfoliosServices = {
     createPortfoliosAxios(token)
       .delete(`/portfolio/${id}`)
       .then((res) => res.data),
+
+  fetchAllPortofoliosFront: () =>
+    createPortfoliosAxiosFront()
+      .get('/portfolios')
+      .then((res) => res.data),
+
+  fetchPortfolioByIdFront: (id) =>
+    createPortfoliosAxiosFront()
+      .get(`/portfolios/${id}`)
+      .then((res) => res.data),
 };
 
 export default portfoliosServices;

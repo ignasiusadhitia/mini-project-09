@@ -20,7 +20,7 @@ const createBlogsAxiosMultipart = (token) =>
 const createBlogsAxiosFront = () =>
   createAxiosInstance({
     baseURLKey: 'front',
-    apikey: API_KEY,
+    apiKey: API_KEY,
   });
 
 const blogsServices = {
@@ -59,9 +59,9 @@ const blogsServices = {
       .get('/blogs')
       .then((res) => res.data),
 
-  fetchArticleByTitleFront: (title) =>
+  fetchArticleBySlugFront: (slug) =>
     createBlogsAxiosFront()
-      .get(`/blogs/${title}`)
+      .get(`/blogs/${slug}`)
       .then((res) => res.data),
 };
 

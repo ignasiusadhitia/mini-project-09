@@ -34,6 +34,8 @@ const AddUserForm = () => {
       email: purify.sanitize(values.email),
       username: purify.sanitize(values.username),
       password: purify.sanitize(values.password),
+      linkedin_url: purify.sanitize(values.linkedin_url),
+      ig_url: purify.sanitize(values.ig_url),
     };
 
     const formData = getFormData();
@@ -127,6 +129,30 @@ const AddUserForm = () => {
               placeholder="Enter password"
               type="password"
               value={values.password || ''}
+              onChange={handleChange}
+            />
+          </FormItem>
+
+          <FormItem>
+            <Label htmlFor="linkedin_url">LinkedIn URL</Label>
+            <Input
+              id="linkedin_url"
+              name="linkedin_url"
+              placeholder="Enter linkedin_url"
+              type="text"
+              value={values.linkedin_url || ''}
+              onChange={handleChange}
+            />
+          </FormItem>
+
+          <FormItem>
+            <Label htmlFor="ig_url">Instagram URL</Label>
+            <Input
+              id="ig_url"
+              name="ig_url"
+              placeholder="Enter ig_url"
+              type="text"
+              value={values.ig_url || ''}
               onChange={handleChange}
             />
           </FormItem>

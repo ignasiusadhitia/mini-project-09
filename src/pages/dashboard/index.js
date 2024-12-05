@@ -9,6 +9,7 @@ export { default as PortfoliosForm } from './dashboard/PortfoliosForm';
 export { default as Profile } from './dashboard/Profile';
 export { default as Teams } from './dashboard/Teams';
 export { default as Testimonials } from './dashboard/Testimonials';
+export { default as TestimonialsForm } from './dashboard/TestimonialsForm';
 export { default as Trusts } from './dashboard/Trusts';
 export { default as Users } from './dashboard/Users';
 export { default as UsersForm } from './dashboard/UsersForm';

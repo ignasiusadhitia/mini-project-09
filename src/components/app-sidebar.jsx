@@ -42,8 +42,8 @@ const data = {
       icon: Briefcase,
     },
     {
-      title: 'Messages',
-      url: '/dashboard/messages',
+      title: 'Contact Us',
+      url: '/dashboard/contact-us',
       icon: Mail,
     },
   ],

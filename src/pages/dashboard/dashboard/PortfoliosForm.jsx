@@ -40,8 +40,6 @@ const PortfolioForm = ({ isEdit }) => {
     portfoliosServices.fetchPortfolioById(portfolioId)
   );
 
-  console.log(portfolio);
-
   const onSubmit = async (event) => {
     event.preventDefault();
 

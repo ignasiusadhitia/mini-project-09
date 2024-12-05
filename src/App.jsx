@@ -11,18 +11,13 @@ import {
   ContactUs as AdminContactUs,
   Blogs,
   BlogsForm,
-  Clients,
   Login,
   Overview,
   Portfolios,
   PortfoliosForm,
   Profile,
-  Teams,
-  Testimonials,
-  Trusts,
   Users,
   UsersForm,
-  WhoWeAre,
 } from '@pages/dashboard';
 import {
   AboutUs,
@@ -82,12 +77,7 @@ const App = () => {
               element={<PortfoliosForm isEdit />}
               path="portfolios/edit/:id"
             />
-            <Route element={<Testimonials />} path="testimonials" />
-            <Route element={<Clients />} path="clients" />
-            <Route element={<WhoWeAre />} path="who-we-are" />
-            <Route element={<Teams />} path="teams" />
-            <Route element={<Trusts />} path="trusts" />
-            <Route element={<AdminContactUs />} path="messages" />
+            <Route element={<AdminContactUs />} path="contact-us" />
             <Route element={<Profile />} path="profile" />
           </Route>
         )}

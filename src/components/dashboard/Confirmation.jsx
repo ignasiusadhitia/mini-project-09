@@ -28,9 +28,8 @@ export default function Confirmation({
 
   const handleAction = async () => {
     try {
-      const response = await actionHandler(token, id);
+      await actionHandler(token, id);
       mutate(mutateKey);
-      console.log(response);
     } catch (error) {
       console.log(error);
     }

@@ -105,7 +105,6 @@ const ArticleForm = ({ isEdit }) => {
         meta_desc: article?.data.meta_desc,
         published: article?.data.published,
       });
-      setPreviewBanner(article?.data.banner || null);
     }
   }, [article, setValues]);
 

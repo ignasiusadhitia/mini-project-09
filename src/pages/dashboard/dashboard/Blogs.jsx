@@ -84,7 +84,6 @@ const columns = [
           const response = await blogsServices.publishArticleById(token, id, {
             published: !row.getValue('published'),
           });
-          console.log(response);
         } catch (error) {
           console.log('Error publishing article:', error);
         }
@@ -158,7 +157,6 @@ const Blogs = () => {
   };
 
   const tableData = articles?.data || [];
-  console.log(articles);
 
   const table = useReactTable({
     data: tableData,

@@ -10,7 +10,6 @@ import {
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuLabel,
-  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
 import { Input } from '@/components/ui/input';
@@ -33,8 +32,9 @@ import {
   useReactTable,
 } from '@tanstack/react-table';
 import { useSelector } from 'react-redux';
-import useSWR from 'swr';
 import { useNavigate } from 'react-router-dom';
+import useSWR from 'swr';
+import { DeleteConfirmation } from '@/components/dashboard';
 
 // Column definitions
 const columns = [
@@ -86,7 +86,7 @@ const columns = [
     id: 'actions',
     enableHiding: false,
     cell: ({ row }) => {
-      const payment = row.original;
+      const userId = row.original.id;
 
       return (
         <DropdownMenu>
@@ -98,14 +98,9 @@ const columns = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
-            >
-              Copy payment ID
+            <DropdownMenuItem className="cursor-pointer">
+              <DeleteConfirmation id={userId} mutateKey="/users" />
             </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View payment details</DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
@@ -150,6 +145,7 @@ const Users = () => {
       rowSelection,
     },
   });
+
   return (
     <div className="w-full">
       <div className="flex items-center justify-between py-4">

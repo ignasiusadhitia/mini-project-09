@@ -1,7 +1,6 @@
 'use client';
 
 import { ChevronsUpDown, LogOut, User } from 'lucide-react';
-import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import useSWR from 'swr';

@@ -1,5 +1,7 @@
 import { createAxiosInstance } from '@services/axiosConfig';
 
+const API_KEY = import.meta.env.VITE_X_API_KEY;
+
 const createBlogsAxios = (token) =>
   createAxiosInstance({
     baseURLKey: 'dash',
@@ -13,6 +15,12 @@ const createBlogsAxiosMultipart = (token) =>
     auth: true,
     multipart: true,
     token,
+  });
+
+const createBlogsAxiosFront = () =>
+  createAxiosInstance({
+    baseURLKey: 'front',
+    apikey: API_KEY,
   });
 
 const blogsServices = {
@@ -44,6 +52,16 @@ const blogsServices = {
   deleteArticleById: (token, id) =>
     createBlogsAxios(token)
       .delete(`/blogs/${id}`)
+      .then((res) => res.data),
+
+  fetchAllArticlesFront: () =>
+    createBlogsAxiosFront()
+      .get('/blogs')
+      .then((res) => res.data),
+
+  fetchArticleByIdFront: (id) =>
+    createBlogsAxiosFront()
+      .get(`/blogs/${id}`)
       .then((res) => res.data),
 };
 

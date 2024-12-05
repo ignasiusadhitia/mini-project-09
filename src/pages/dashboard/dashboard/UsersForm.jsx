@@ -1,4 +1,7 @@
-import { useSelector } from 'react-redux';
+import { useEffect, useState } from 'react';
+
+import PropTypes from 'prop-types';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 
 import { Typography } from '@/components/commons';
@@ -8,10 +11,13 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { FormProvider, useFormContext } from '@/context/FormContext';
 import usersServices from '@/services/usersServices';
+import { clearUser } from '@/store/features/userSlice';
 
-const AddUserForm = () => {
+const UserForm = ({ isEdit }) => {
+  const [previewPhoto, setPreviewPhoto] = useState(null);
   const {
     values,
+    setValues,
     handleChange,
     getFormData,
     resetForm,
@@ -20,7 +26,9 @@ const AddUserForm = () => {
     setIsSubmitting,
   } = useFormContext();
   const { token } = useSelector((state) => state.auth);
+  const { selectedUser } = useSelector((state) => state.user);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onSubmit = async (event) => {
     event.preventDefault();
@@ -44,7 +52,16 @@ const AddUserForm = () => {
     );
 
     try {
-      await usersServices.addUser(token, sanitizedData);
+      if (isEdit) {
+        await usersServices.updateUserById(
+          token,
+          selectedUser.id,
+          sanitizedData
+        );
+        dispatch(clearUser());
+      } else {
+        await usersServices.addUser(token, sanitizedData);
+      }
       resetForm();
       navigate('/dashboard/users');
     } catch (error) {
@@ -54,22 +71,51 @@ const AddUserForm = () => {
     }
   };
 
+  const handleFileChange = (event) => {
+    const file = event.target.files[0];
+    if (file) {
+      setPreviewPhoto(URL.createObjectURL(file));
+      handleChange(event);
+    }
+  };
+
+  useEffect(() => {
+    if (selectedUser) {
+      setValues({
+        photo: null,
+        name: selectedUser.name,
+        title: selectedUser.title,
+        email: selectedUser.email,
+        username: selectedUser.username,
+        password: selectedUser.password,
+        linkedin_url: selectedUser.linkedin_url,
+        ig_url: selectedUser.ig_url,
+      });
+    }
+
+    // eslint-disable-next-line
+  }, [selectedUser]);
+
   return (
     <div className="mx-auto w-full max-w-lg p-4">
       <Typography as="h1" variant="subHeading">
-        Add New User
+        {isEdit ? 'Edit User' : 'Add New User'}
       </Typography>
       <form onSubmit={onSubmit}>
         <div className="space-y-6">
           <FormItem>
             <Label htmlFor="photo">Photo</Label>
-
+            {previewPhoto && (
+              <div className="mx-auto w-full">
+                <img alt="Preview Banner" src={previewPhoto} width="3rem" />
+              </div>
+            )}
             <Input
               accept="image/*"
               id="photo"
               name="photo"
               type="file"
-              onChange={handleChange}
+              onChange={handleFileChange}
             />
           </FormItem>
 
@@ -100,6 +146,7 @@ const AddUserForm = () => {
           <FormItem>
             <Label htmlFor="email">Email</Label>
             <Input
+              disabled={isEdit}
               id="email"
               name="email"
               placeholder="Enter email"
@@ -112,6 +159,7 @@ const AddUserForm = () => {
           <FormItem>
             <Label htmlFor="username">Username</Label>
             <Input
+              disabled={isEdit}
               id="username"
               name="username"
               placeholder="Enter username"
@@ -162,7 +210,7 @@ const AddUserForm = () => {
             disabled={isSubmitting}
             type="submit"
           >
-            {isSubmitting ? 'Submitting...' : 'Add User'}
+            {isSubmitting ? 'Submitting...' : isEdit ? 'Update' : 'Submit'}
           </Button>
         </div>
       </form>
@@ -170,12 +218,20 @@ const AddUserForm = () => {
   );
 };
 
-const UsersForm = () => {
+UserForm.propTypes = {
+  isEdit: PropTypes.bool,
+};
+
+const UsersForm = ({ isEdit = false }) => {
   return (
     <FormProvider isMultipart>
-      <AddUserForm />
+      <UserForm isEdit={isEdit} />
     </FormProvider>
   );
+};
+
+UsersForm.propTypes = {
+  isEdit: PropTypes.bool,
 };
 
 export default UsersForm;

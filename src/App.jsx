@@ -71,6 +71,7 @@ const App = () => {
             <Route index element={<Overview />} />
             <Route element={<Users />} path="users" />
             <Route element={<UsersForm />} path="users/add" />
+            <Route element={<UsersForm isEdit />} path="users/edit/:id" />
             <Route element={<Blogs />} path="blogs" />
             <Route element={<BlogsForm />} path="blogs/add" />
             <Route element={<BlogsForm isEdit />} path="blogs/edit/:id" />

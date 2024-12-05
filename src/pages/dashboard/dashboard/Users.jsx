@@ -31,10 +31,11 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import useSWR from 'swr';
 import { DeleteConfirmation } from '@/components/dashboard';
+import { selectUser } from '@/store/features/userSlice';
 
 // Column definitions
 const columns = [
@@ -87,6 +88,13 @@ const columns = [
     enableHiding: false,
     cell: ({ row }) => {
       const userId = row.original.id;
+      const navigate = useNavigate();
+      const dispatch = useDispatch();
+
+      const handleEditUser = () => {
+        dispatch(selectUser(row.original));
+        navigate(`/dashboard/users/edit/${row.original.id}`);
+      };
 
       return (
         <DropdownMenu>
@@ -105,6 +113,9 @@ const columns = [
                 deleteHandler={usersServices.deleteUserById}
                 entityName="user"
               />
+            </DropdownMenuItem>
+            <DropdownMenuItem className="cursor-pointer">
+              <span onClick={handleEditUser}>Edit</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>

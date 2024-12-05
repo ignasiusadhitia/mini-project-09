@@ -216,7 +216,6 @@ const BlogsForm = ({ isEdit = false }) => {
 
 BlogsForm.propTypes = {
   isEdit: PropTypes.bool,
-  articleId: PropTypes.string,
 };
 
 export default BlogsForm;

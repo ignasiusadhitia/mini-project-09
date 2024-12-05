@@ -27,6 +27,11 @@ const usersServices = {
       .post('/users', user)
       .then((res) => res.data),
 
+  updateUserById: (token, id, user) =>
+    createUsersAxiosMultipart(token)
+      .put(`/users/${id}`, user)
+      .then((res) => res.data),
+
   deleteUserById: (token, id) =>
     createUsersAxios(token)
       .delete(`/users/${id}`)

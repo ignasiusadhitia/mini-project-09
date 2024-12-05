@@ -1,15 +1,4 @@
-import {
-  Award,
-  BookOpen,
-  Briefcase,
-  FileQuestion,
-  Group,
-  Mail,
-  MapIcon,
-  Pen,
-  PersonStanding,
-  User,
-} from 'lucide-react';
+import { BookOpen, Briefcase, Mail, MapIcon, User } from 'lucide-react';
 
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
@@ -51,31 +40,6 @@ const data = {
       title: 'Portfolio',
       url: '/dashboard/portfolios',
       icon: Briefcase,
-    },
-    {
-      title: 'Testimonials',
-      url: '/dashboard/testimonials',
-      icon: Pen,
-    },
-    {
-      title: 'Clients',
-      url: '/dashboard/clients',
-      icon: PersonStanding,
-    },
-    {
-      title: 'Who We Are',
-      url: '/dashboard/who-we-are',
-      icon: FileQuestion,
-    },
-    {
-      title: 'Teams',
-      url: '/dashboard/teams',
-      icon: Group,
-    },
-    {
-      title: 'Trusts',
-      url: '/dashboard/trusts',
-      icon: Award,
     },
     {
       title: 'Messages',

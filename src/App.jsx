@@ -14,7 +14,8 @@ import {
   Clients,
   Login,
   Overview,
-  Portfolio,
+  Portfolios,
+  PortfoliosForm,
   Profile,
   Teams,
   Testimonials,
@@ -75,7 +76,12 @@ const App = () => {
             <Route element={<Blogs />} path="blogs" />
             <Route element={<BlogsForm />} path="blogs/add" />
             <Route element={<BlogsForm isEdit />} path="blogs/edit/:id" />
-            <Route element={<Portfolio />} path="portfolio" />
+            <Route element={<Portfolios />} path="portfolios" />
+            <Route element={<PortfoliosForm />} path="portfolios/add" />
+            <Route
+              element={<PortfoliosForm isEdit />}
+              path="portfolios/edit/:id"
+            />
             <Route element={<Testimonials />} path="testimonials" />
             <Route element={<Clients />} path="clients" />
             <Route element={<WhoWeAre />} path="who-we-are" />

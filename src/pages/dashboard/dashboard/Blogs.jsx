@@ -3,6 +3,7 @@ import { useState } from 'react';
 
 import { ArrowUpDown, MoreHorizontal } from 'lucide-react';
 
+import { Confirmation, DeleteConfirmation } from '@/components/dashboard';
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import {
@@ -22,7 +23,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import usersServices from '@/services/usersServices';
+import blogsServices from '@/services/blogsServices';
 import {
   flexRender,
   getCoreRowModel,
@@ -34,8 +35,6 @@ import {
 import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import useSWR from 'swr';
-import { Confirmation, DeleteConfirmation } from '@/components/dashboard';
-import blogsServices from '@/services/blogsServices';
 
 // Column definitions
 const columns = [

@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { ArrowUpDown, MoreHorizontal } from 'lucide-react';
 
-import { DeleteConfirmation } from '@/components/dashboard';
+import { Confirmation, DeleteConfirmation } from '@/components/dashboard';
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import {
@@ -23,8 +23,7 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import usersServices from '@/services/usersServices';
-import { selectUser } from '@/store/features/userSlice';
+import blogsServices from '@/services/blogsServices';
 import {
   flexRender,
   getCoreRowModel,
@@ -33,67 +32,51 @@ import {
   getSortedRowModel,
   useReactTable,
 } from '@tanstack/react-table';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import useSWR from 'swr';
+import portfoliosServices from '@/services/portfoliosServices';
 
 // Column definitions
 const columns = [
   {
-    accessorKey: 'photo',
-    header: 'Photo',
-    cell: ({ row }) => (
-      <img
-        className="h-8 w-8 rounded-full"
-        src={row.getValue('photo')}
-        alt="user-photo"
-      />
-    ),
-  },
-  {
-    accessorKey: 'name',
-    header: ({ column }) => (
-      <Button
-        variant="ghost"
-        onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-      >
-        Name
-        <ArrowUpDown />
-      </Button>
-    ),
-    cell: ({ row }) => <div className="capitalize">{row.getValue('name')}</div>,
-  },
-  {
-    accessorKey: 'email',
-    header: ({ column }) => (
-      <Button
-        variant="ghost"
-        onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
-      >
-        Email
-        <ArrowUpDown />
-      </Button>
-    ),
-    cell: ({ row }) => <div className="lowercase">{row.getValue('email')}</div>,
-  },
-  {
     accessorKey: 'title',
     header: 'Title',
+    cell: ({ row }) => <div className="lowercase">{row.getValue('title')}</div>,
+  },
+  {
+    accessorKey: 'published',
+    header: ({ column }) => (
+      <Button
+        variant="ghost"
+        onClick={() => column.toggleSorting(column.getIsSorted() === 'asc')}
+      >
+        Published
+        <ArrowUpDown />
+      </Button>
+    ),
     cell: ({ row }) => (
-      <div className="capitalize">{row.getValue('title')}</div>
+      <div className="capitalize">
+        {row.getValue('published') ? 'Published' : 'Draft'}
+      </div>
+    ),
+  },
+  {
+    accessorKey: 'updated_at',
+    header: 'Updated At',
+    cell: ({ row }) => (
+      <div className="capitalize">{row.getValue('updated_at')}</div>
     ),
   },
   {
     id: 'actions',
     enableHiding: false,
     cell: ({ row }) => {
-      const userId = row.original.id;
+      const portfolioId = row.original.id;
       const navigate = useNavigate();
-      const dispatch = useDispatch();
 
-      const handleEditUser = () => {
-        dispatch(selectUser(row.original));
-        navigate(`/dashboard/users/edit/${row.original.id}`);
+      const handleEditPortfolio = (id) => {
+        navigate(`/dashboard/portfolios/edit/${id}`);
       };
 
       return (
@@ -108,14 +91,14 @@ const columns = [
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem className="cursor-pointer">
               <DeleteConfirmation
-                id={userId}
-                mutateKey="/users"
-                deleteHandler={usersServices.deleteUserById}
-                entityName="user"
+                id={portfolioId}
+                mutateKey="/blogs"
+                deleteHandler={portfoliosServices.deletePortfolioById}
+                entityName="article"
               />
             </DropdownMenuItem>
             <DropdownMenuItem className="cursor-pointer">
-              <span onClick={handleEditUser}>Edit</span>
+              <span onClick={() => handleEditPortfolio(portfolioId)}>Edit</span>
             </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
@@ -124,7 +107,7 @@ const columns = [
   },
 ];
 
-const Users = () => {
+const Portfolios = () => {
   const [sorting, setSorting] = useState([]);
   const [columnFilters, setColumnFilters] = useState([]);
   const [columnVisibility, setColumnVisibility] = useState({});
@@ -132,16 +115,18 @@ const Users = () => {
   const navigate = useNavigate();
   const { token } = useSelector((state) => state.auth);
   const {
-    data: users,
+    data: portfolios,
     error,
     isLoading,
-  } = useSWR(token ? '/users' : null, () => usersServices.fetchAllUsers(token));
-
-  const handleAddNewUser = () => {
-    navigate('/dashboard/users/add');
+  } = useSWR(token ? '/portfolio' : null, () =>
+    portfoliosServices.fetchAllPortfolios(token)
+  );
+  const handleAddNewPortfolio = () => {
+    navigate('/dashboard/portfolios/add');
   };
 
-  const tableData = users?.data || [];
+  const tableData = portfolios?.data || [];
+  console.log('tableData', tableData);
 
   const table = useReactTable({
     data: tableData,
@@ -167,13 +152,13 @@ const Users = () => {
       <div className="flex items-center justify-between py-4">
         <Input
           className="max-w-sm"
-          placeholder="Filter emails..."
-          value={table.getColumn('email')?.getFilterValue() ?? ''}
+          placeholder="Filter title..."
+          value={table.getColumn('title')?.getFilterValue() ?? ''}
           onChange={(event) =>
-            table.getColumn('email')?.setFilterValue(event.target.value)
+            table.getColumn('title')?.setFilterValue(event.target.value)
           }
         />
-        <Button onClick={handleAddNewUser}>Add User</Button>
+        <Button onClick={handleAddNewPortfolio}>Add Portfolio</Button>
       </div>
 
       {isLoading && (
@@ -265,4 +250,4 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default Portfolios;

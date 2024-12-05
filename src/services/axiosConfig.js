@@ -13,6 +13,7 @@ export const createAxiosInstance = ({
   auth = false,
   multipart = false,
   token = '',
+  apiKey = '',
 } = {}) => {
   const instance = axios.create({
     baseURL: BASE_URLS[baseURLKey],
@@ -21,6 +22,11 @@ export const createAxiosInstance = ({
       ...headers,
     },
   });
+
+  // Add x-api-key dynamically if provided
+  if (apiKey) {
+    instance.defaults.headers['x-api-key'] = apiKey;
+  }
 
   // Add Authorization header dynamically
   if (auth) {

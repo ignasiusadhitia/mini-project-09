@@ -49,7 +49,7 @@ const data = {
     },
     {
       title: 'Portfolio',
-      url: '/dashboard/portfolio',
+      url: '/dashboard/portfolios',
       icon: Briefcase,
     },
     {

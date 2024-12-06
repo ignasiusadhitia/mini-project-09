@@ -89,7 +89,7 @@ FooterLink.propTypes = {
 
 const Footer = () => {
   return (
-    <div className="bg-black">
+    <div className="mt-[70px] bg-black">
       <footer className="mx-auto max-w-[1525px] pb-14 pt-28 text-white">
         <section className="grid grid-cols-2 gap-[198px]">
           {/* Footer Top Left Section */}

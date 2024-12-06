@@ -20,12 +20,7 @@ const HomePage = () => {
   console.log(data);
 
   console.log('testimonials', testimonials);
-  return (
-    <div>
-      HomePage
-      <Footer />
-    </div>
-  );
+  return <main>HomePage</main>;
 };
 
 export default HomePage;

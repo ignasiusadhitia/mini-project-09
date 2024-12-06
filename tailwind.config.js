@@ -32,6 +32,9 @@ export default {
       screens: {},
     },
     extend: {
+      backgroundImage: {
+        'hero-pattern': "url('/src/assets/vectors/bg-header.svg')",
+      },
       colors: {
         'front-black': '#101010',
         'front-pure-black': '#000000',

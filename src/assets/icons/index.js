@@ -3,3 +3,4 @@ export { default as Facebook } from './fa-facebook.svg?react';
 export { default as Google } from './fa-google-plus.svg?react';
 export { default as Twitter } from './fa-twitter.svg?react';
 export { default as Logo } from './logo.svg?react';
+export { default as Hamburger } from './hamburger.svg?react';

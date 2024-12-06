@@ -3,6 +3,7 @@ export { default as BlogCardSection } from './BlogCardSection';
 export { default as CTASection } from './CTASection';
 export { default as Footer } from './Footer';
 export { default as Header } from './Header.jsx';
+export { default as Navbar } from './Navbar.jsx';
 export { default as PastClientsSection } from './PastClientsSection.jsx';
 export { default as PortfolioCard } from './PortfolioCard.jsx';
 export { default as PortfolioSection } from './PortfolioSection.jsx';

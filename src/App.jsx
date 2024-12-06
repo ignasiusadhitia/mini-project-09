@@ -6,6 +6,7 @@ import {
   Routes,
 } from 'react-router-dom';
 
+import FrontLayout from '@/layouts/FrontLayout';
 import ProtectedLayout from '@layouts/ProtectedLayout';
 import {
   ContactUs as AdminContactUs,
@@ -43,13 +44,17 @@ const App = () => {
         ) : (
           <>
             {/* Guests Routes */}
-            <Route element={<HomePage />} path="/" />
-            <Route element={<OurWorks />} path="/our-works" />
-            <Route element={<Article />} path="/our-works/:id" />
-            <Route element={<AboutUs />} path="/about-us" />
-            <Route element={<ContactUs />} path="/contact" />
-            <Route element={<BlogList />} path="/blog" />
-            <Route element={<Article />} path="/blog/:id" />
+            <Route element={<FrontLayout />} path="/">
+              <Route index element={<HomePage />} />
+              <Route element={<OurWorks />} path="our-works" />
+              <Route element={<Article />} path="our-works/:id" />
+              <Route element={<AboutUs />} path="about-us" />
+              <Route element={<ContactUs />} path="contact" />
+              <Route element={<BlogList />} path="blog" />
+              <Route element={<Article />} path="blog/:slug" />
+              {/* Fallback Route */}
+              <Route element={<NotFound />} path="*" />
+            </Route>
 
             {/* Auth Routes */}
             {!isAuthenticated && (
@@ -89,9 +94,6 @@ const App = () => {
             <Route element={<Profile />} path="profile" />
           </Route>
         )}
-
-        {/* Fallback Route */}
-        <Route element={<NotFound />} path="*" />
       </Routes>
     </Router>
   );

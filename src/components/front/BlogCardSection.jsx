@@ -15,12 +15,9 @@ const BlogCardSection = () => {
           </Typography>
 
           <Link to="/blog">
-            <Typography
-              as="span"
-              className="border-b-2 border-front-black font-bold uppercase"
-            >
+            <span className="mr-[37px] border-b-2 border-front-black font-bold uppercase">
               see all
-            </Typography>
+            </span>
           </Link>
         </div>
 

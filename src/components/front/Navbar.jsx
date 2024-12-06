@@ -65,7 +65,7 @@ const Navbar = () => {
 
   return (
     <div
-      className={`fixed w-full ${isScrolled ? 'bg-front-primary opacity-95 shadow-sm' : ''}`}
+      className={`fixed z-50 w-full ${isScrolled ? 'bg-front-primary opacity-95 shadow-sm' : ''}`}
     >
       <nav className="mx-auto flex max-w-[1359px] items-center justify-between py-11">
         <Logo className="h-7 cursor-pointer text-white" />

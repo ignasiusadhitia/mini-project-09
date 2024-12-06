@@ -2,7 +2,7 @@ import useSWR from 'swr';
 
 import portfoliosServices from '@/services/portfoliosServices';
 import testimonialsServices from '@/services/testimonialsServices';
-import { BlogCardSection, Footer } from '@components/front';
+import { BlogCardSection, PastClientsSection } from '@components/front';
 
 const HomePage = () => {
   // eslint-disable-next-line
@@ -22,6 +22,7 @@ const HomePage = () => {
   console.log('testimonials', testimonials);
   return (
     <main>
+      <PastClientsSection />
       <BlogCardSection />
     </main>
   );

@@ -6,14 +6,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import useSWR from 'swr';
 
 import { Typography } from '@/components/commons';
-import { RichTextEditor } from '@/components/dashboard';
 import { Button } from '@/components/ui/button';
 import { FormItem } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Textarea } from '@/components/ui/textarea';
 import { FormProvider, useFormContext } from '@/context/FormContext';
-import portfoliosServices from '@/services/portfoliosServices';
 import testimonialsServices from '@/services/testimonialsServices';
 
 const TestimonialForm = ({ isEdit }) => {
@@ -32,18 +30,22 @@ const TestimonialForm = ({ isEdit }) => {
   const navigate = useNavigate();
   const { id: testimonialId } = useParams();
 
+  const queryParams = { username: 'john_doe' }; // Contoh parameter username
   const {
     data: testimonial,
-    // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line
     error,
-    // eslint-disable-next-line no-unused-vars
+    // eslint-disable-next-line
     isLoading,
-  } = useSWR(isEdit && testimonialId ? '/testimonials' : null, () =>
-    testimonialsServices.fetchTestimonialById(testimonialId)
+  } = useSWR(
+    queryParams ? ['/testimonials', queryParams] : null,
+    // eslint-disable-next-line
+    ([url, params]) => testimonialsServices.fetchTestimonialByParam(params)
   );
 
   const onSubmit = async (event) => {
     event.preventDefault();
+    console.log(values);
 
     setIsSubmitting(true);
 
@@ -51,7 +53,7 @@ const TestimonialForm = ({ isEdit }) => {
       foto_profile: values.foto_profile,
       name: purify.sanitize(values.name),
       title: purify.sanitize(values.title),
-      message: values.sanitize(values.message),
+      message: purify.sanitize(values.message),
     };
 
     const formData = getFormData();
@@ -107,7 +109,12 @@ const TestimonialForm = ({ isEdit }) => {
             <Label htmlFor="banner">Profile Photo</Label>
             {previewPhoto && (
               <div>
-                <img alt="Preview Banner" src={previewPhoto} width="100%" />
+                <img
+                  alt="Preview Banner"
+                  className="mx-auto"
+                  src={previewPhoto}
+                  width="20%"
+                />
               </div>
             )}
             <Input

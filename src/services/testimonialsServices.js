@@ -24,22 +24,27 @@ const createTestimonialsAxiosMultipart = (token) =>
   });
 
 const testimonialsServices = {
+  addTestimonial: (token, testimonial) =>
+    createTestimonialsAxiosMultipart(token)
+      .post('/testimonial', testimonial)
+      .then((res) => res.data),
+
   fetchAllTestimonials: (token) =>
     createTestimonialsAxios(token)
       .get('/testimonial')
       .then((res) => res.data),
 
-  fetchPortfolioById: (id) =>
+  fetchTestimonialByParam: (params) =>
     createTestimonialsAxiosFront()
-      .get(`/testimonial/${id}`)
+      .get(`/testimonials`, { params })
       .then((res) => res.data),
 
-  updatePortfolioById: (token, id, portfolio) =>
+  updateTestimonialById: (token, id, testimonial) =>
     createTestimonialsAxiosMultipart(token)
-      .put(`/testimonial/${id}`, portfolio)
+      .put(`/testimonial/${id}`, testimonial)
       .then((res) => res.data),
 
-  deletePortfolioById: (token, id) =>
+  deleteTestimonialById: (token, id) =>
     createTestimonialsAxios(token)
       .delete(`/testimonial/${id}`)
       .then((res) => res.data),

@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { ArrowUpDown, MoreHorizontal } from 'lucide-react';
 
-import { DeleteConfirmation } from '@/components/dashboard';
+import { Confirmation, DeleteConfirmation } from '@/components/dashboard';
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import {
@@ -96,11 +96,14 @@ const columns = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem className="cursor-pointer">
-              <DeleteConfirmation
+              <Confirmation
                 id={testimonialId}
-                mutateKey="/blogs"
-                deleteHandler={testimonialsServices.deleteTestimonialById}
-                entityName="article"
+                mutateKey="/testimonial"
+                actionHandler={testimonialsServices.deleteTestimonialById}
+                customLabel="Delete"
+                entityName="testimonial"
+                customTitle="Are you sure you want to delete this testimonial?"
+                customDescription="This action cannot be undone. This will permanently delete your testimonial and remove your data from our servers."
               />
             </DropdownMenuItem>
             <DropdownMenuItem className="cursor-pointer">
@@ -130,7 +133,7 @@ const Testimonials = () => {
     testimonialsServices.fetchAllTestimonials(token)
   );
   const handleAddNewTestimonial = () => {
-    navigate('/dashboard/testimonial/add');
+    navigate('/dashboard/testimonials/add');
   };
 
   const tableData = testimonials?.data || [];

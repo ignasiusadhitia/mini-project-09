@@ -1,4 +1,4 @@
-import { BookOpen, Briefcase, Mail, MapIcon, User } from 'lucide-react';
+import { BookOpen, Briefcase, Mail, MapIcon, Pen, User } from 'lucide-react';
 
 import { NavMain } from '@/components/nav-main';
 import { NavUser } from '@/components/nav-user';
@@ -40,6 +40,11 @@ const data = {
       title: 'Portfolio',
       url: '/dashboard/portfolios',
       icon: Briefcase,
+    },
+    {
+      title: 'Testimonials',
+      url: '/dashboard/testimonials',
+      icon: Pen,
     },
     {
       title: 'Contact Us',
